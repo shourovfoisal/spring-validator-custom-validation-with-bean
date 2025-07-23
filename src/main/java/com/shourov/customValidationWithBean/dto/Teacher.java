@@ -1,8 +1,10 @@
 package com.shourov.customValidationWithBean.dto;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class Teacher {
     private int experience;
     private String name;

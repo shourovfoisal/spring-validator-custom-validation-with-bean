@@ -1,6 +1,7 @@
 package com.shourov.customValidationWithBean.controller;
 
 import com.shourov.customValidationWithBean.dto.Teacher;
+import com.shourov.customValidationWithBean.exception.InvalidTeacherException;
 import com.shourov.customValidationWithBean.validator.TeacherValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class TeacherController {
         
         if(result.hasErrors()) {
             log.error("Invalid request body");
-            throw new RuntimeException("Invalid teacher request body");
+            throw new InvalidTeacherException(result);
         }
         
         return ResponseEntity.ok(teacher);

@@ -1,6 +1,7 @@
 package com.shourov.customValidationWithBean.controller;
 
 import com.shourov.customValidationWithBean.dto.Student;
+import com.shourov.customValidationWithBean.exception.InvalidStudentException;
 import com.shourov.customValidationWithBean.validator.StudentValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class StudentController {
         
         if(result.hasErrors()) {
             log.error("Invalid request body");
-            throw new RuntimeException("Invalid student request body");
+            throw new InvalidStudentException(result);
         }
         
         return ResponseEntity.ok(student);
